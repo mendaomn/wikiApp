@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Wikipedia</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script src="app.js"></script>
+</head>
+
+<body ng-app="WikiApp">
+
+	<div class="container" ng-controller="WikiSearchCtrl">
+    <div class="row">
+      <header class="jumbotron">
+        <h1>Wikipedia Search</h1>
+      </header>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+
+        <form class="wikiForm" ng-submit="onSubmit()">
+          <input type="text" placeholder="Scrivi qui" ng-model="searchText">
+          <button>Search</button>
+        </form>
+
+      </div>
+		</div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="risultato in risultati" ng-click="risultato.clicked = !risultato.clicked">
+            <h3>
+              <a href="{{risultato.link}}" target="_blank">{{risultato.nome}}</a>
+            </h3>
+            <p ng-show="risultato.clicked">{{risultato.descrizione}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+	</div>
+
+</body>
+
+</html>
